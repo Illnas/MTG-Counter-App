@@ -93,4 +93,14 @@ export const addLifepointsPlayerTwo = () => {
       });
     };
   };
+
+
+  export const trackTokens = (tokensToTrack) => {
+    return (dispatch) => {
+      dispatch({
+        type: "trackTokens",
+        payload: tokensToTrack
+      })
+    }
+  }
   

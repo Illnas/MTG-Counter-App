@@ -12,7 +12,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
 
   return (
     <nav className="m-4 p-2 bg-slate-400 w-2/3">
-      <ul className="flex justify-between items-center">
+      <ul className="flex justify-center items-center">
         <li className="bg-slate-100 m-1 p-3 rounded-l-full w-24 cursor-pointer hover:bg-slate-700 hover:text-white">
           <button onClick={prevPage} className="w-full h-full">
             Previous

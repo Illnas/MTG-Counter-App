@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux"
+import { actionCreators } from '../features/index';
 import Pagination from "./Pagination";
 
 const AddTokens = () => {
   const [addTokenState, setAddTokenState] = useState(true);
 
-  const tokens = useSelector((state) => state.tokens.tokens);
+  const tokens = useSelector((state) => state.tokens.fetchedTokens);
   const tokenState = useSelector((state) => state.tokens.tokenState);
+  const dispatch = useDispatch();
+  const { trackTokens } = bindActionCreators(actionCreators, dispatch)
+
+
 
   //Pagination data
   // User is currently on this page
@@ -32,7 +38,6 @@ const AddTokens = () => {
 
   const toggleAddTokens = () => {
     setAddTokenState(!addTokenState);
-    console.log(tokens.data);
   };
 
   return (
@@ -63,6 +68,7 @@ const AddTokens = () => {
                   <div key={uuidv4()}>
                     {e.image_uris && (
                       <img
+                        onClick={() => trackTokens(e.image_uris.normal)}
                         src={e.image_uris.normal}
                         alt="tokens"
                         className="w-60"
