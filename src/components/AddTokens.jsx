@@ -6,7 +6,6 @@ import Pagination from "./Pagination";
 const AddTokens = () => {
   const [addTokenState, setAddTokenState] = useState(true);
 
-
   const tokens = useSelector((state) => state.tokens.tokens);
   const tokenState = useSelector((state) => state.tokens.tokenState);
 
@@ -38,14 +37,12 @@ const AddTokens = () => {
 
   return (
     <>
-      <div className="w-48 bg-slate-200 mt-4 flex flex-row">
-        <button
-          className="bg-orange-500 hover:bg-orange-600 w-56 p-2 rounded-lg text-white "
-          onClick={() => toggleAddTokens()}
-        >
-          Add Tokens
-        </button>
-      </div>
+      <button
+        className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600 text-white rounded-full"
+        onClick={() => toggleAddTokens()}
+      >
+        Add Tokens
+      </button>
 
       {/* Modal */}
       <div
@@ -65,7 +62,11 @@ const AddTokens = () => {
                 currentRecords.map((e) => (
                   <div key={uuidv4()}>
                     {e.image_uris && (
-                      <img src={e.image_uris.normal} alt="tokens" className="w-60"/>
+                      <img
+                        src={e.image_uris.normal}
+                        alt="tokens"
+                        className="w-60"
+                      />
                     )}
                   </div>
                 ))}
