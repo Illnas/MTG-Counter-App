@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux"
-import { actionCreators } from '../features/index';
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../features/index";
 import Pagination from "./Pagination";
 
 const AddTokens = () => {
   const [addTokenState, setAddTokenState] = useState(true);
 
   const tokens = useSelector((state) => state.tokens.fetchedTokens);
+  const addedTokens = useSelector((state) => state.tokens.addedTokens);
   const tokenState = useSelector((state) => state.tokens.tokenState);
   const dispatch = useDispatch();
-  const { trackTokens } = bindActionCreators(actionCreators, dispatch)
+  const { trackTokens } = bindActionCreators(actionCreators, dispatch);
 
+  /* Count numbers of elements in an array */
+  const count = {};
 
+  for (const element of addedTokens) {
+    if (count[element]) {
+      count[element] += 1;
+    } else {
+      count[element] = 1;
+    }
+  }
 
-  //Pagination data
+  /*  Pagination data */
   // User is currently on this page
   const [currentPage, setCurrentPage] = useState(1);
   // No of Records to be displayed on each page
@@ -38,6 +48,7 @@ const AddTokens = () => {
 
   const toggleAddTokens = () => {
     setAddTokenState(!addTokenState);
+    console.log(count);
   };
 
   return (
@@ -65,14 +76,20 @@ const AddTokens = () => {
             <div className="grid grid-cols-5 gap-8">
               {!tokenState &&
                 currentRecords.map((e) => (
-                  <div key={uuidv4()}>
+                  <div key={uuidv4()} className="">
                     {e.image_uris && (
-                      <img
-                        onClick={() => trackTokens(e.image_uris.normal)}
-                        src={e.image_uris.normal}
-                        alt="tokens"
-                        className="w-60"
-                      />
+                      <div className="relative cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+                        <img
+                          onClick={() => trackTokens(e.image_uris.normal)}
+                          src={e.image_uris.normal}
+                          alt="tokens"
+                          className="w-60"
+                        />
+                        {count[e.image_uris.normal] && (
+                          <div className="absolute right-4 top-4 z-10 bg-orange-500 px-2 py-1 rounded-full text-white">{count[e.image_uris.normal]}</div>
+                        )}
+                        
+                      </div>
                     )}
                   </div>
                 ))}
