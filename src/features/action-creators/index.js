@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 /* export const depositMoney = (amount) => {
   return (dispatch) => {
     dispatch({
@@ -35,72 +34,90 @@ export const subtractLifepointsPlayerOne = () => {
   };
 };
 
+
 export const addLifepointsPlayerTwo = () => {
-    return (dispatch) => {
-      dispatch({
-        type: "addPlayerTwo",
-      });
-    };
+  return (dispatch) => {
+    dispatch({
+      type: "addPlayerTwo",
+    });
   };
-  
-  export const subtractLifepointsPlayerTwo = () => {
-    return (dispatch) => {
-      dispatch({
-        type: "subtractPlayerTwo",
-      });
-    };
-  };
+};
 
-  export const setLifepoints = (lifepoints) => {
-    return (dispatch) => {
-      dispatch({
-        type: "setLifepoints",
-        payload: lifepoints
-      });
-    };
+export const subtractLifepointsPlayerTwo = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "subtractPlayerTwo",
+    });
   };
+};
 
-  export const addedTokens = (tokens) => {
-    return (dispatch) => {
-      dispatch({
-        type: "fetchedTokens",
-        payload: tokens,
-      });
-    };
+export const setLifepoints = (lifepoints) => {
+  return (dispatch) => {
+    dispatch({
+      type: "setLifepoints",
+      payload: lifepoints,
+    });
   };
-  
-  export const addTokens = () => {
-    return (dispatch) => {
-      dispatch(fetchRequest());
-      axios
-        .get(
-          `https://api.scryfall.com/cards/search?q=t%3Atoken&unique=cards&as=grid&order=name`
-        )
-        .then((response) => {
-          const tokens = response.data;
-          dispatch(addedTokens(tokens));
-        })
-        .catch((error) => {
-          const errorMsg = error;
-        });
-    };
-  };
-  
-  export const fetchRequest = (amount) => {
-    return (dispatch) => {
-      dispatch({
-        type: "fetchRequest",
-      });
-    };
-  };
+};
 
+export const addedTokens = (tokens) => {
+  return (dispatch) => {
+    dispatch({
+      type: "fetchedTokens",
+      payload: tokens,
+    });
+  };
+};
 
-  export const trackTokens = (tokensToTrack) => {
-    return (dispatch) => {
-      dispatch({
-        type: "trackTokens",
-        payload: tokensToTrack
+export const addTokens = () => {
+  return (dispatch) => {
+    dispatch(fetchRequest());
+    axios
+      .get(
+        `https://api.scryfall.com/cards/search?q=t%3Atoken&unique=cards&as=grid&order=name`
+      )
+      .then((response) => {
+        const tokens = response.data;
+        dispatch(addedTokens(tokens));
       })
+      .catch((error) => {
+        const errorMsg = error;
+      });
+  };
+};
+
+export const fetchRequest = (amount) => {
+  return (dispatch) => {
+    dispatch({
+      type: "fetchRequest",
+    });
+  };
+};
+
+/* export const trackTokens = (tokensToTrack) => {
+  return (dispatch) => {
+    dispatch({
+      type: "trackTokens",
+      payload: tokensToTrack,
+    });
+  };
+}; */
+
+
+export const trackTokens = (player, tokensToTrack) => {
+  return (dispatch) => {
+    if (player === "first") {
+      dispatch({
+        type: "firstAddTokens",
+        payload: tokensToTrack,
+      });
     }
-  }
-  
+
+    if (player === "second") {
+      dispatch({
+        type: "secondAddTokens",
+        payload: tokensToTrack,
+      });
+    }
+  };
+};

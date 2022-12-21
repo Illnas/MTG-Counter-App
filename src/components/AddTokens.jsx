@@ -5,11 +5,11 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 import Pagination from "./Pagination";
 
-const AddTokens = () => {
+const AddTokens = ({player}) => {
   const [addTokenState, setAddTokenState] = useState(true);
 
   const tokens = useSelector((state) => state.tokens.fetchedTokens);
-  const addedTokens = useSelector((state) => state.tokens.addedTokens);
+  const addedTokens = player.tokens;
   const tokenState = useSelector((state) => state.tokens.tokenState);
   const dispatch = useDispatch();
   const { trackTokens } = bindActionCreators(actionCreators, dispatch);
@@ -49,6 +49,7 @@ const AddTokens = () => {
   const toggleAddTokens = () => {
     setAddTokenState(!addTokenState);
     console.log(count);
+    console.log(player)
   };
 
   return (
@@ -80,7 +81,7 @@ const AddTokens = () => {
                     {e.image_uris && (
                       <div className="relative cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
                         <img
-                          onClick={() => trackTokens(e.image_uris.normal)}
+                          onClick={() => trackTokens(player.name, e.image_uris.normal)}
                           src={e.image_uris.normal}
                           alt="tokens"
                           className="w-60"

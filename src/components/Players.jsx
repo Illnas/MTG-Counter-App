@@ -6,7 +6,7 @@ import Tokens from "./Tokens";
 
 const Players = ({player, add, subtract}) => {
   const dispatch = useDispatch();
-  const { addLifepoints, subtractLifepoints } = bindActionCreators(actionCreators, dispatch)
+ 
  
 
   return (
@@ -28,7 +28,7 @@ const Players = ({player, add, subtract}) => {
           5:35
         </button>
       </div>
-      <Tokens />
+      <Tokens player={player} />
     </div>
   );
 };
