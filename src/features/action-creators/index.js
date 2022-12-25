@@ -104,19 +104,21 @@ export const fetchRequest = (amount) => {
 }; */
 
 
-export const trackTokens = (player, tokensToTrack) => {
+export const trackTokens = (player, tokensToTrack, id) => {
   return (dispatch) => {
+    const tokenData = {tokensToTrack, id}
     if (player === "first") {
+      
       dispatch({
         type: "firstAddTokens",
-        payload: tokensToTrack,
+        payload: tokenData,
       });
     }
 
     if (player === "second") {
       dispatch({
         type: "secondAddTokens",
-        payload: tokensToTrack,
+        payload: tokenData,
       });
     }
   };

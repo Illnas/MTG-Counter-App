@@ -9,7 +9,7 @@ import Counters from "./Counters";
 const ShowTokens = ({ player }) => {
   const [tokenState, setTokenState] = useState(true);
 
-  const trackedTokens = player.tokens;
+  const trackedTokens = player.tokens
 
 
 
@@ -62,7 +62,7 @@ const ShowTokens = ({ player }) => {
                     {e && (
                       <div className="relative cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
                         <img
-                          src={e}
+                          src={e.token}
                           alt="added tokens"
                           className="w-60"
                         />
@@ -71,7 +71,7 @@ const ShowTokens = ({ player }) => {
                       </div>
                       
                     )}
-                    <Counters />
+                    <Counters tokenId={e.id}/>
                   </div>
                 ))}
             </div>

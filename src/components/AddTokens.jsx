@@ -9,14 +9,13 @@ const AddTokens = ({player}) => {
   const [addTokenState, setAddTokenState] = useState(true);
 
   const tokens = useSelector((state) => state.tokens.fetchedTokens);
-  const addedTokens = player.tokens;
+  const addedTokens = player.tokens.map(e => e.token)
   const tokenState = useSelector((state) => state.tokens.tokenState);
   const dispatch = useDispatch();
   const { trackTokens } = bindActionCreators(actionCreators, dispatch);
 
   /* Count numbers of elements in an array */
   const count = {};
-
   for (const element of addedTokens) {
     if (count[element]) {
       count[element] += 1;
@@ -81,7 +80,7 @@ const AddTokens = ({player}) => {
                     {e.image_uris && (
                       <div className="relative cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
                         <img
-                          onClick={() => trackTokens(player.name, e.image_uris.normal)}
+                          onClick={() => trackTokens(player.name, e.image_uris.normal, uuidv4())}
                           src={e.image_uris.normal}
                           alt="tokens"
                           className="w-60"
