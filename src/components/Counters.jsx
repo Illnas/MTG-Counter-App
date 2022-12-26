@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../features/index";
 
-
-const Counters = (tokenId) => {
-  const [lifepointsOption, setLifePointsOption] = useState(20);
+const Counters = ({tokenId, player}) => {
   const counterData = ["+1/+1", "+0/+1", "+0/+2", "+1/+0", "+1/+2", "+2/+0", "+2/+2"]
-
   const [dropdownOpen, setdropdownOpen] = useState(true);
-  const [optionMenuState, setOptionMenuState] = useState(false);
+
+  const dispatch = useDispatch();
+  const { trackCounters } = bindActionCreators(actionCreators, dispatch);
 
   return (
     <div className="border border-slate-900 w-full mt-3 p-2 flex justify-center">
       <div className="relative">
         <button
-          onClick={() => (setdropdownOpen(!dropdownOpen), console.log(tokenId))}
+          onClick={() => (setdropdownOpen(!dropdownOpen))}
           className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
         >
           Counters
@@ -61,7 +63,7 @@ const Counters = (tokenId) => {
                 <button
                 key={uuidv4()}
                 value={e}
-                onClick={() => console.log(e)}
+                onClick={() => (trackCounters(player.name, e, tokenId), console.log(e))}
                 className="w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
               >
                 {e}

@@ -71,7 +71,7 @@ const ShowTokens = ({ player }) => {
                       </div>
                       
                     )}
-                    <Counters tokenId={e.id}/>
+                    <Counters tokenId={e.id} player={player}/>
                   </div>
                 ))}
             </div>

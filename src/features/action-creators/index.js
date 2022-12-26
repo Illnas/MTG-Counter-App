@@ -123,3 +123,24 @@ export const trackTokens = (player, tokensToTrack, id) => {
     }
   };
 };
+
+
+export const trackCounters = (player, counters, tokenId) => {
+  return (dispatch) => {
+    const counterData = {counters, tokenId}
+
+    if(player === "first") {
+      dispatch({
+        type: "firstCounters",
+        payload: counterData,
+      })
+    }
+
+    if(player === "second") {
+      dispatch({
+        type: "firstCounters",
+        payload: counterData,
+      })
+    }
+  }
+}

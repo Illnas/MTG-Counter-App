@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
     case "setLifepoints":
       return { ...initialState, lifepoints: action.payload };
       case "secondAddTokens":
-        return { ...state, tokens: [...state.tokens, {token: action.payload, counter: []}] };
+        return { ...state, tokens: [...state.tokens, {token: action.payload.tokensToTrack, counter: [], id: action.payload.id}] };
     default:
       return state;
   }
