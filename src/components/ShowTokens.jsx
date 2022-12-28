@@ -5,15 +5,47 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 import Pagination from "./Pagination";
 import Counters from "./Counters";
+import CounterList from "./CounterList";
 
 const ShowTokens = ({ player }) => {
+  const counterData = [
+    "+1/+1",
+    "+0/+1",
+    "+0/+2",
+    "+1/+0",
+    "+1/+2",
+    "+2/+0",
+    "+2/+2",
+  ];
   const [tokenState, setTokenState] = useState(true);
 
-  const trackedTokens = player.tokens
+  const trackedTokens = player.tokens;
 
+  const addedTokens = player.tokens.map((e) => e.token);
 
+  const trackedCounters = trackedTokens.map((e) => e.counter.map((e) => e));
 
+  /* Count numbers of elements in an array */
+  const count = {};
+  for (const element of addedTokens) {
+    if (count[element]) {
+      count[element] += 1;
+    } else {
+      count[element] = 1;
+    }
+  }
 
+  /* Count numbers of elements in an array */
+  const counterObj = {};
+  for (const element of counterData) {
+    if (counterObj[element]) {
+      counterObj[element] += 1;
+    } else {
+      counterObj[element] = 1;
+    }
+  }
+
+ 
 
   //Pagination data
   // User is currently on this page
@@ -31,7 +63,7 @@ const ShowTokens = ({ player }) => {
 
   const toggleShowTokens = () => {
     setTokenState(!tokenState);
-    console.log(trackedTokens);
+    console.log(count);
   };
 
   return (
@@ -66,12 +98,12 @@ const ShowTokens = ({ player }) => {
                           alt="added tokens"
                           className="w-60"
                         />
-
-                      
                       </div>
-                      
                     )}
-                    <Counters tokenId={e.id} player={player}/>
+                    <Counters tokenId={e.id} player={player} />
+                    <div>
+                      <CounterList counterList={e.counter}/>                     
+                    </div>
                   </div>
                 ))}
             </div>

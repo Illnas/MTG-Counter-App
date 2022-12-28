@@ -11,6 +11,8 @@ const Counters = ({tokenId, player}) => {
   const dispatch = useDispatch();
   const { trackCounters } = bindActionCreators(actionCreators, dispatch);
 
+  
+
   return (
     <div className="border border-slate-900 w-full mt-3 p-2 flex justify-center">
       <div className="relative">
@@ -63,7 +65,7 @@ const Counters = ({tokenId, player}) => {
                 <button
                 key={uuidv4()}
                 value={e}
-                onClick={() => (trackCounters(player.name, e, tokenId), console.log(e))}
+                onClick={() => (trackCounters(player.name, e, tokenId))}
                 className="w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
               >
                 {e}

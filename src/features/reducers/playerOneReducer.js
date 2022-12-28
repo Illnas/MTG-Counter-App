@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
         let filtered = newState.tokens.filter(e => e.id === action.payload.tokenId)
         let arr = filtered.map(e => e.counter.push(action.payload.counters))
         return {
-          ...state, newState
+          ...state
         }
     default:
       return state;
