@@ -2,12 +2,16 @@ import React from "react";
 import AddTokens from "./AddTokens";
 import ShowTokens from "./ShowTokens";
 
-const Tokens = ({player}) => {
+const Tokens = ({ player }) => {
   return (
-    <div className="mt-4 flex justify-center items-center w-42 mr-2">
-      <AddTokens player={player} />
-      <ShowTokens player={player}/>
-    </div>
+    <>
+      {player.tokenState && (
+        <div className="mt-4 flex justify-center items-center w-42 mr-2">
+          <AddTokens player={player} />
+          <ShowTokens player={player} />
+        </div>
+      )}
+    </>
   );
 };
 

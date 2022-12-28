@@ -6,11 +6,17 @@ import { actionCreators } from "../features/index";
 const NavBar = () => {
   const [lifepointsOption, setLifePointsOption] = useState(20);
 
-  const [dropdownOpen, setdropdownOpen] = useState(true);
+  const [dropdownOpenLifepoints, setdropdownOpenLifepoints] = useState(true);
+  const [dropdownOpenToken, setdropdownOpenToken] = useState(true);
   const [optionMenuState, setOptionMenuState] = useState(false);
+
+  const tokenStateOne = useSelector(state => state.playerOne)
+  const tokenStateTwo = useSelector(state => state.playerTwo)
+
 
   const dispatch = useDispatch();
   const { setLifepoints } = bindActionCreators(actionCreators, dispatch);
+  const { allowTokens, resetState }  = bindActionCreators(actionCreators, dispatch);
 
   return (
     <nav
@@ -27,11 +33,11 @@ const NavBar = () => {
       >
         <div className="relative">
           <button
-            onClick={() => setdropdownOpen(!dropdownOpen)}
+            onClick={() => setdropdownOpenLifepoints(!dropdownOpenLifepoints)}
             className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
           >
             Lifepoints: {lifepointsOption}
-            {dropdownOpen ? (
+            {dropdownOpenLifepoints ? (
               <svg
                 className="w-4 h-4 ml-2"
                 fill="none"
@@ -69,10 +75,10 @@ const NavBar = () => {
           <div className="bg-white w-32 rounded absolute top-10 left-12 flex justify-center items-center">
             <div
               className="divide-y divide-slate-100 rounded border-2 border-white w-full"
-              hidden={dropdownOpen}
+              hidden={dropdownOpenLifepoints}
             >
               <button
-                onClick={() => (setLifepoints(20), setLifePointsOption(20))}
+                onClick={() => (setLifepoints(20), setLifePointsOption(20), setdropdownOpenLifepoints(!dropdownOpenLifepoints))}
                 className={
                   lifepointsOption === 20
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -83,7 +89,7 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (setLifepoints(30), setLifePointsOption(30))}
+                onClick={() => (setLifepoints(30), setLifePointsOption(30), setdropdownOpenLifepoints(!dropdownOpenLifepoints))}
                 className={
                   lifepointsOption === 30
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -94,7 +100,7 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (setLifepoints(40), setLifePointsOption(40))}
+                onClick={() => (setLifepoints(40), setLifePointsOption(40), setdropdownOpenLifepoints(!dropdownOpenLifepoints))}
                 className={
                   lifepointsOption === 40
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -107,14 +113,102 @@ const NavBar = () => {
           </div>
         </div>
 
-        <button className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600">
-          Timer
-        </button>
-        <button className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600">
-          Tokens
-        </button>
+        <div className="relative">
+          <button
+            onClick={() => setdropdownOpenToken(!dropdownOpenToken)}
+            className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+          >
+            Tokens
+            {dropdownOpenToken ? (
+              <svg
+                className="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M37 18L25 30L13 18"
+                  stroke="black"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13 30L25 18L37 30"
+                  stroke="black"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+          </button>
 
-        <button className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600">
+          <div className="bg-white w-32 rounded absolute top-10 left-6 flex justify-center items-center">
+            <div
+              className="divide-y divide-slate-100 rounded border-2 border-white w-full"
+              hidden={dropdownOpenToken}
+            >
+              <button
+                onClick={() => (setdropdownOpenToken(!dropdownOpenToken), allowTokens(!tokenStateOne.tokenState, "player One"))}
+                className={
+                  tokenStateOne.tokenState
+                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                }
+              >
+                Player One
+              </button>
+
+              <button
+                onClick={() => (setdropdownOpenToken(!dropdownOpenToken), allowTokens(!tokenStateTwo.tokenState, "player Two"))}
+                className={
+                  tokenStateTwo.tokenState
+                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                }
+              >
+                Player Two
+              </button>
+
+              <button
+                onClick={() => (setdropdownOpenToken(!dropdownOpenToken))}
+                className={
+                  lifepointsOption === 40
+                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                }
+              >
+                Player Three
+              </button>
+
+              
+              <button
+                onClick={() => (setdropdownOpenToken(!dropdownOpenToken))}
+                className={
+                  lifepointsOption === 40
+                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                }
+              >
+                Player Four
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <button className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600" onClick={() => (resetState(), setLifePointsOption(20))}>
           Reset
         </button>
       </div>

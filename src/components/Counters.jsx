@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 
-const Counters = ({tokenId, player}) => {
-  const counterData = ["+1/+1", "+0/+1", "+0/+2", "+1/+0", "+1/+2", "+2/+0", "+2/+2"]
+const Counters = ({ tokenId, player }) => {
+  // State
   const [dropdownOpen, setdropdownOpen] = useState(true);
-
+  //Redux
   const dispatch = useDispatch();
   const { trackCounters } = bindActionCreators(actionCreators, dispatch);
 
-  
+  //Variables
+  const counterData = [
+    "+1/+1",
+    "+0/+1",
+    "+0/+2",
+    "+1/+0",
+    "+1/+2",
+    "+2/+0",
+    "+2/+2",
+  ];
 
   return (
     <div className="border border-slate-900 w-full mt-3 p-2 flex justify-center">
       <div className="relative">
         <button
-          onClick={() => (setdropdownOpen(!dropdownOpen))}
+          onClick={() => setdropdownOpen(!dropdownOpen)}
           className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
         >
           Counters
@@ -61,17 +70,16 @@ const Counters = ({tokenId, player}) => {
             className="divide-y divide-slate-100 rounded border-2 border-white w-full"
             hidden={dropdownOpen}
           >
-            {counterData.map(e => (
-                <button
+            {counterData.map((e) => (
+              <button
                 key={uuidv4()}
                 value={e}
-                onClick={() => (trackCounters(player.name, e, tokenId))}
+                onClick={() => trackCounters(player.name, e, tokenId)}
                 className="w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
               >
                 {e}
               </button>
             ))}
-          
           </div>
         </div>
       </div>

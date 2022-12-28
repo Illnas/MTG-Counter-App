@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -47,8 +47,6 @@ const AddTokens = ({player}) => {
 
   const toggleAddTokens = () => {
     setAddTokenState(!addTokenState);
-    console.log(count);
-    console.log(player)
   };
 
   return (
@@ -65,11 +63,18 @@ const AddTokens = ({player}) => {
         className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto"
         hidden={addTokenState}
       >
-        <div className="relative top-2 m-10 p-2 border bg-white">
+        <div className="relative top-2 my-4 mx-20 p-2 border bg-white">
           <div className="w-full flex justify-center">
             <h3 className="bg-orange-500 text-white text-center w-32 text-2xl mb-8 p-2 rounded-lg">
               Tokens
             </h3>
+            <button
+              id="ok-btn"
+              className="px-4 bg-green-500 text-white mb-8 ml-4 rounded-md hover:bg-green-600"
+              onClick={() => toggleAddTokens()}
+            >
+              X
+            </button>
           </div>
 
           <div className="w-full flex justify-center">
@@ -102,15 +107,6 @@ const AddTokens = ({player}) => {
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
-          </div>
-          <div className=" flex justify-center px-4 py-3">
-            <button
-              id="ok-btn"
-              className="px-4 py-2 bg-green-500 text-white rounded-md w-24 hover:bg-green-600"
-              onClick={() => toggleAddTokens()}
-            >
-              Leave
-            </button>
           </div>
         </div>
       </div>

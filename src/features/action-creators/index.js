@@ -1,23 +1,5 @@
 import axios from "axios";
 
-/* export const depositMoney = (amount) => {
-  return (dispatch) => {
-    dispatch({
-      type: "deposit",
-      payload: amount,
-    });
-  };
-};
-
-export const withdrawMoney = (amount) => {
-  return (dispatch) => {
-    dispatch({
-      type: "withdraw",
-      payload: amount,
-    });
-  };
-}; */
-
 export const addLifepointsPlayerOne = () => {
   return (dispatch) => {
     dispatch({
@@ -33,7 +15,6 @@ export const subtractLifepointsPlayerOne = () => {
     });
   };
 };
-
 
 export const addLifepointsPlayerTwo = () => {
   return (dispatch) => {
@@ -86,7 +67,7 @@ export const addTokens = () => {
   };
 };
 
-export const fetchRequest = (amount) => {
+export const fetchRequest = () => {
   return (dispatch) => {
     dispatch({
       type: "fetchRequest",
@@ -94,21 +75,28 @@ export const fetchRequest = (amount) => {
   };
 };
 
-/* export const trackTokens = (tokensToTrack) => {
+export const allowTokens = (tokenState, player) => {
   return (dispatch) => {
-    dispatch({
-      type: "trackTokens",
-      payload: tokensToTrack,
-    });
-  };
-}; */
+    if (player === "player One") {
+      dispatch({
+        type: "allowTokensFirst",
+        payload: tokenState,
+      });
+    }
 
+    if (player === "player Two") {
+      dispatch({
+        type: "allowTokensSecond",
+        payload: tokenState,
+      });
+    }
+  };
+};
 
 export const trackTokens = (player, tokensToTrack, id) => {
   return (dispatch) => {
-    const tokenData = {tokensToTrack, id}
+    const tokenData = { tokensToTrack, id };
     if (player === "first") {
-      
       dispatch({
         type: "firstAddTokens",
         payload: tokenData,
@@ -124,23 +112,30 @@ export const trackTokens = (player, tokensToTrack, id) => {
   };
 };
 
-
 export const trackCounters = (player, counters, tokenId) => {
   return (dispatch) => {
-    const counterData = {counters, tokenId}
+    const counterData = { counters, tokenId };
 
-    if(player === "first") {
+    if (player === "first") {
       dispatch({
         type: "firstCounters",
         payload: counterData,
-      })
+      });
     }
 
-    if(player === "second") {
+    if (player === "second") {
       dispatch({
         type: "firstCounters",
         payload: counterData,
-      })
+      });
     }
-  }
-}
+  };
+};
+
+export const resetState = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "reset",
+    });
+  };
+};

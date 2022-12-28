@@ -1,13 +1,7 @@
 import React from "react";
-import {  useSelector, useDispatch } from "react-redux"
-import { bindActionCreators } from "redux"
-import { actionCreators } from '../features/index';
 import Tokens from "./Tokens";
 
 const Players = ({player, add, subtract}) => {
-  const dispatch = useDispatch();
- 
- 
 
   return (
     <div className="flex-1 border-2 border-slate-900 flex flex-col justify-center items-center">
@@ -24,9 +18,6 @@ const Players = ({player, add, subtract}) => {
           +
         </button>
 
-        <button className="ml-4 py-2 px-6 bg-orange-500 hover:bg-orange-600 text-white text-3xl h-16 rounded">
-          5:35
-        </button>
       </div>
       <Tokens player={player} />
     </div>
