@@ -1,36 +1,66 @@
 import axios from "axios";
 
-export const addLifepointsPlayerOne = () => {
+export const addLifepoints = (player) => {
   return (dispatch) => {
-    dispatch({
-      type: "addPlayerOne",
-    });
+    if(player === "first") {
+      dispatch({
+        type: "addPlayerOne",
+      });
+    }
+
+    if(player === "second") {
+      dispatch({
+        type: "addPlayerTwo",
+      });
+    }
+
+    if(player === "third") {
+      dispatch({
+        type: "addPlayerThird",
+      });
+    }
+
+    if(player === "fourth") {
+      dispatch({
+        type: "addPlayerFourth",
+      });
+    }
+   
   };
 };
 
-export const subtractLifepointsPlayerOne = () => {
+export const subtractLifepoints = (player) => {
   return (dispatch) => {
-    dispatch({
-      type: "subtractPlayerOne",
-    });
+
+    if(player === "first") {
+      dispatch({
+        type: "subtractPlayerOne",
+      });
+    }
+
+    if(player === "second") {
+      dispatch({
+        type: "subtractPlayerTwo",
+      });
+    }
+
+    if(player === "third") {
+      dispatch({
+        type: "subtractPlayerThird",
+      });
+    }
+
+    if(player === "fourth") {
+      dispatch({
+        type: "subtractPlayerFourth",
+      });
+    }
+
+   
   };
 };
 
-export const addLifepointsPlayerTwo = () => {
-  return (dispatch) => {
-    dispatch({
-      type: "addPlayerTwo",
-    });
-  };
-};
 
-export const subtractLifepointsPlayerTwo = () => {
-  return (dispatch) => {
-    dispatch({
-      type: "subtractPlayerTwo",
-    });
-  };
-};
 
 export const setLifepoints = (lifepoints) => {
   return (dispatch) => {
@@ -90,6 +120,20 @@ export const allowTokens = (tokenState, player) => {
         payload: tokenState,
       });
     }
+
+    if (player === "player Three") {
+      dispatch({
+        type: "allowTokensThird",
+        payload: tokenState,
+      });
+    }
+
+    if (player === "player Four") {
+      dispatch({
+        type: "allowTokensFourth",
+        payload: tokenState,
+      });
+    }
   };
 };
 
@@ -109,6 +153,20 @@ export const trackTokens = (player, tokensToTrack, id) => {
         payload: tokenData,
       });
     }
+
+    if (player === "third") {
+      dispatch({
+        type: "thirdAddTokens",
+        payload: tokenData,
+      });
+    }
+
+    if (player === "fourth") {
+      dispatch({
+        type: "fourthAddTokens",
+        payload: tokenData,
+      });
+    }
   };
 };
 
@@ -125,7 +183,21 @@ export const trackCounters = (player, counters, tokenId) => {
 
     if (player === "second") {
       dispatch({
-        type: "firstCounters",
+        type: "secondCounters",
+        payload: counterData,
+      });
+    }
+
+    if (player === "third") {
+      dispatch({
+        type: "thirdCounters",
+        payload: counterData,
+      });
+    }
+
+    if (player === "fourth") {
+      dispatch({
+        type: "fourthCounters",
         payload: counterData,
       });
     }

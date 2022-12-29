@@ -14,6 +14,8 @@ const NavBar = () => {
 
   const playerOne = useSelector((state) => state.playerOne);
   const playerTwo = useSelector((state) => state.playerTwo);
+  const playerThree = useSelector((state)=> state.playerThree);
+  const playerFour = useSelector((state)=> state.playerFour);
 
   const dispatch = useDispatch();
   const { setLifepoints } = bindActionCreators(actionCreators, dispatch);
@@ -76,7 +78,7 @@ const NavBar = () => {
             )}
           </button>
 
-          <div className="bg-white w-32 rounded absolute top-10 left-12 flex justify-center items-center">
+          <div className="bg-white w-32 rounded absolute top-10 left-8 flex justify-center items-center">
             <div
               className="divide-y divide-slate-100 rounded border-2 border-white w-full"
               hidden={dropdownOpenPlayer}
@@ -309,9 +311,12 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => setdropdownOpenToken(!dropdownOpenToken)}
+                 onClick={() => (
+                  setdropdownOpenToken(!dropdownOpenToken),
+                  allowTokens(!playerThree.tokenState, "player Three")
+                )}
                 className={
-                  lifepointsOption === 40
+                  playerThree.tokenState
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
@@ -320,9 +325,12 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => setdropdownOpenToken(!dropdownOpenToken)}
+                      onClick={() => (
+                        setdropdownOpenToken(!dropdownOpenToken),
+                        allowTokens(!playerFour.tokenState, "player Four")
+                      )}
                 className={
-                  lifepointsOption === 40
+                  playerFour.tokenState
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }

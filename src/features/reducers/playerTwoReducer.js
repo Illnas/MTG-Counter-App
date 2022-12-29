@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
           },
         ],
       };
-    case "firstCounters":
+    case "secondCounters":
       let newState = { ...state };
       let filtered = newState.tokens.filter(
         (e) => e.id === action.payload.tokenId
