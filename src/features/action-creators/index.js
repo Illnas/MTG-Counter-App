@@ -1,5 +1,14 @@
 import axios from "axios";
 
+export const setPlayerAmount = (playerAmount) => {
+  return (dispatch) => {
+    dispatch({
+      type: "setPlayers",
+      payload: playerAmount
+    })
+  }
+}
+
 export const addLifepoints = (player) => {
   return (dispatch) => {
     if(player === "first") {

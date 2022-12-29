@@ -10,6 +10,7 @@ function App() {
   const playerTwo = useSelector((state)=> state.playerTwo);
   const playerThree = useSelector((state)=> state.playerThree);
   const playerFour = useSelector((state)=> state.playerFour);
+  const playerAmount = useSelector((state) => state.playerAmount)
 
 
   const dispatch = useDispatch();

@@ -5,24 +5,21 @@ import { actionCreators } from "../features/index";
 
 const NavBar = () => {
   const [lifepointsOption, setLifePointsOption] = useState(20);
-  const [playersOption, setPlayersOption] = useState(1);
 
   const [dropdownOpenLifepoints, setdropdownOpenLifepoints] = useState(true);
   const [dropdownOpenToken, setdropdownOpenToken] = useState(true);
   const [dropdownOpenPlayer, setdropdownOpenPlayer] = useState(true);
   const [optionMenuState, setOptionMenuState] = useState(false);
 
+  const playerAmount = useSelector((state) => state.playerAmount);
   const playerOne = useSelector((state) => state.playerOne);
   const playerTwo = useSelector((state) => state.playerTwo);
-  const playerThree = useSelector((state)=> state.playerThree);
-  const playerFour = useSelector((state)=> state.playerFour);
+  const playerThree = useSelector((state) => state.playerThree);
+  const playerFour = useSelector((state) => state.playerFour);
 
   const dispatch = useDispatch();
-  const { setLifepoints } = bindActionCreators(actionCreators, dispatch);
-  const { allowTokens, resetState } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { allowTokens, resetState, setPlayerAmount, setLifepoints } =
+    bindActionCreators(actionCreators, dispatch);
 
   return (
     <nav
@@ -42,7 +39,7 @@ const NavBar = () => {
             onClick={() => setdropdownOpenPlayer(!dropdownOpenPlayer)}
             className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
           >
-            Players: {playersOption}
+            Players: {playerAmount.players}
             {dropdownOpenPlayer ? (
               <svg
                 className="w-4 h-4 ml-2"
@@ -84,12 +81,12 @@ const NavBar = () => {
               hidden={dropdownOpenPlayer}
             >
               <button
-                onClick={() => (
-                  setPlayersOption(1),
-                  setdropdownOpenPlayer(!dropdownOpenPlayer)
-                )}
+                onClick={() => {
+                  setPlayerAmount(1);
+                  setdropdownOpenPlayer(!dropdownOpenPlayer);
+                }}
                 className={
-                  playersOption === 1
+                  playerAmount.players === 1
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
@@ -98,12 +95,12 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (
-                  setPlayersOption(2),
-                  setdropdownOpenPlayer(!dropdownOpenPlayer)
-                )}
+                onClick={() => {
+                  setPlayerAmount(2);
+                  setdropdownOpenPlayer(!dropdownOpenPlayer);
+                }}
                 className={
-                  playersOption === 2
+                  playerAmount.players === 2
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
@@ -112,12 +109,12 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (
-                  setPlayersOption(3),
-                  setdropdownOpenPlayer(!dropdownOpenPlayer)
-                )}
+                onClick={() => {
+                  setPlayerAmount(3);
+                  setdropdownOpenPlayer(!dropdownOpenPlayer);
+                }}
                 className={
-                  playersOption === 3
+                  playerAmount.players === 3
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
@@ -126,12 +123,12 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (
-                  setPlayersOption(4),
-                  setdropdownOpenPlayer(!dropdownOpenPlayer)
-                )}
+                onClick={() => {
+                  setPlayerAmount(4);
+                  setdropdownOpenPlayer(!dropdownOpenPlayer);
+                }}
                 className={
-                  playersOption === 4
+                  playerAmount.players === 4
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
@@ -189,11 +186,11 @@ const NavBar = () => {
               hidden={dropdownOpenLifepoints}
             >
               <button
-                onClick={() => (
-                  setLifepoints(20),
-                  setLifePointsOption(20),
-                  setdropdownOpenLifepoints(!dropdownOpenLifepoints)
-                )}
+                onClick={() => {
+                  setLifepoints(20);
+                  setLifePointsOption(20);
+                  setdropdownOpenLifepoints(!dropdownOpenLifepoints);
+                }}
                 className={
                   lifepointsOption === 20
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -204,11 +201,11 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (
-                  setLifepoints(30),
-                  setLifePointsOption(30),
-                  setdropdownOpenLifepoints(!dropdownOpenLifepoints)
-                )}
+                onClick={() => {
+                  setLifepoints(30);
+                  setLifePointsOption(30);
+                  setdropdownOpenLifepoints(!dropdownOpenLifepoints);
+                }}
                 className={
                   lifepointsOption === 30
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -219,11 +216,11 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (
-                  setLifepoints(40),
-                  setLifePointsOption(40),
-                  setdropdownOpenLifepoints(!dropdownOpenLifepoints)
-                )}
+                onClick={() => {
+                  setLifepoints(40);
+                  setLifePointsOption(40);
+                  setdropdownOpenLifepoints(!dropdownOpenLifepoints);
+                }}
                 className={
                   lifepointsOption === 40
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -283,10 +280,10 @@ const NavBar = () => {
               hidden={dropdownOpenToken}
             >
               <button
-                onClick={() => (
-                  setdropdownOpenToken(!dropdownOpenToken),
-                  allowTokens(!playerOne.tokenState, "player One")
-                )}
+                onClick={() => {
+                  setdropdownOpenToken(!dropdownOpenToken);
+                  allowTokens(!playerOne.tokenState, "player One");
+                }}
                 className={
                   playerOne.tokenState
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -297,10 +294,10 @@ const NavBar = () => {
               </button>
 
               <button
-                onClick={() => (
-                  setdropdownOpenToken(!dropdownOpenToken),
-                  allowTokens(!playerTwo.tokenState, "player Two")
-                )}
+                onClick={() => {
+                  setdropdownOpenToken(!dropdownOpenToken);
+                  allowTokens(!playerTwo.tokenState, "player Two");
+                }}
                 className={
                   playerTwo.tokenState
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -311,10 +308,10 @@ const NavBar = () => {
               </button>
 
               <button
-                 onClick={() => (
-                  setdropdownOpenToken(!dropdownOpenToken),
-                  allowTokens(!playerThree.tokenState, "player Three")
-                )}
+                onClick={() => {
+                  setdropdownOpenToken(!dropdownOpenToken);
+                  allowTokens(!playerThree.tokenState, "player Three");
+                }}
                 className={
                   playerThree.tokenState
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -325,10 +322,10 @@ const NavBar = () => {
               </button>
 
               <button
-                      onClick={() => (
-                        setdropdownOpenToken(!dropdownOpenToken),
-                        allowTokens(!playerFour.tokenState, "player Four")
-                      )}
+                onClick={() => {
+                  setdropdownOpenToken(!dropdownOpenToken);
+                  allowTokens(!playerFour.tokenState, "player Four");
+                }}
                 className={
                   playerFour.tokenState
                     ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
@@ -343,7 +340,7 @@ const NavBar = () => {
 
         <button
           className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600"
-          onClick={() => (resetState(), setLifePointsOption(20))}
+          onClick={() => {resetState(); setLifePointsOption(20)}}
         >
           Reset
         </button>
