@@ -91,7 +91,7 @@ const AddTokens = ({player}) => {
                           className="w-60"
                         />
                         {count[e.image_uris.normal] && (
-                          <div className="absolute right-4 top-4 z-10 bg-orange-500 px-2 py-1 rounded-full text-white">{count[e.image_uris.normal]}</div>
+                          <div className="absolute right-4 top-4 z-10 bg-orange-500 px-2 py-1 rounded-full text-white">{count[e.image_uris.normal]}x</div>
                         )}
                         
                       </div>

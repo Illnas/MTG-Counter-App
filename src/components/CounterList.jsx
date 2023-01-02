@@ -1,7 +1,18 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../features/index";
 
-const CounterList = ({ counterList }) => {
+
+const CounterList = ({ counterList, tokenId, player }) => {
+  const dispatch = useDispatch();
+  const { removeCounters } = bindActionCreators(actionCreators, dispatch);
+
+
+
+
+
   const count = {};
   for (const element of counterList) {
     if (count[element]) {
@@ -19,7 +30,7 @@ const CounterList = ({ counterList }) => {
       {counterList
         .filter(function (item, pos) {
           return counterList.indexOf(item) === pos;
-        })
+        }).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
         .map((e) => (
           <div
             key={uuidv4()}
@@ -27,6 +38,7 @@ const CounterList = ({ counterList }) => {
           >
             <div className="text-sm font-semibold">{e}</div>
             <div className="text-sm font-bold text-orange-600">{count[e]}x</div>
+            <button onClick={() => (removeCounters(player.name, tokenId, e), console.log(counterList))}>X</button>
           </div>
         ))}
     </div>

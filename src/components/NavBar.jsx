@@ -87,7 +87,7 @@ const NavBar = () => {
                 }}
                 className={
                   playerAmount.players === 1
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -101,7 +101,7 @@ const NavBar = () => {
                 }}
                 className={
                   playerAmount.players === 2
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -115,7 +115,7 @@ const NavBar = () => {
                 }}
                 className={
                   playerAmount.players === 3
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -126,10 +126,11 @@ const NavBar = () => {
                 onClick={() => {
                   setPlayerAmount(4);
                   setdropdownOpenPlayer(!dropdownOpenPlayer);
+                  setdropdownOpenToken(true);
                 }}
                 className={
                   playerAmount.players === 4
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -193,7 +194,7 @@ const NavBar = () => {
                 }}
                 className={
                   lifepointsOption === 20
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -208,7 +209,7 @@ const NavBar = () => {
                 }}
                 className={
                   lifepointsOption === 30
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -223,7 +224,7 @@ const NavBar = () => {
                 }}
                 className={
                   lifepointsOption === 40
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
+                    ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
                     : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
                 }
               >
@@ -237,6 +238,7 @@ const NavBar = () => {
           <button
             onClick={() => setdropdownOpenToken(!dropdownOpenToken)}
             className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+            disabled={playerAmount.players === 4}
           >
             Tokens
             {dropdownOpenToken ? (
@@ -279,68 +281,109 @@ const NavBar = () => {
               className="divide-y divide-slate-100 rounded border-2 border-white w-full"
               hidden={dropdownOpenToken}
             >
-              <button
-                onClick={() => {
-                  setdropdownOpenToken(!dropdownOpenToken);
-                  allowTokens(!playerOne.tokenState, "player One");
-                }}
-                className={
-                  playerOne.tokenState
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
-                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
-                }
-              >
-                Player One
-              </button>
+              {playerAmount.players === 1 && (
+                <button
+                  onClick={() => {
+                    setdropdownOpenToken(!dropdownOpenToken);
+                    allowTokens(!playerOne.tokenState, "player One");
+                  }}
+                  className={
+                    playerOne.tokenState
+                      ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
+                      : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                  }
+                >
+                  Player One
+                </button>
+              )}
 
-              <button
-                onClick={() => {
-                  setdropdownOpenToken(!dropdownOpenToken);
-                  allowTokens(!playerTwo.tokenState, "player Two");
-                }}
-                className={
-                  playerTwo.tokenState
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
-                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
-                }
-              >
-                Player Two
-              </button>
+              {playerAmount.players === 2 && (
+                <>
+                  <button
+                    onClick={() => {
+                      setdropdownOpenToken(!dropdownOpenToken);
+                      allowTokens(!playerOne.tokenState, "player One");
+                    }}
+                    className={
+                      playerOne.tokenState
+                        ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
+                        : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                    }
+                  >
+                    Player One
+                  </button>
 
-              <button
-                onClick={() => {
-                  setdropdownOpenToken(!dropdownOpenToken);
-                  allowTokens(!playerThree.tokenState, "player Three");
-                }}
-                className={
-                  playerThree.tokenState
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
-                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
-                }
-              >
-                Player Three
-              </button>
+                  <button
+                    onClick={() => {
+                      setdropdownOpenToken(!dropdownOpenToken);
+                      allowTokens(!playerTwo.tokenState, "player Two");
+                    }}
+                    className={
+                      playerTwo.tokenState
+                        ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
+                        : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                    }
+                  >
+                    Player Two
+                  </button>
+                </>
+              )}
 
-              <button
-                onClick={() => {
-                  setdropdownOpenToken(!dropdownOpenToken);
-                  allowTokens(!playerFour.tokenState, "player Four");
-                }}
-                className={
-                  playerFour.tokenState
-                    ? "w-full text-sm hover:bg-orange-00 text-white py-2 text-center bg-slate-500"
-                    : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
-                }
-              >
-                Player Four
-              </button>
+              {playerAmount.players === 3 && (
+                <>
+                  <button
+                    onClick={() => {
+                      setdropdownOpenToken(!dropdownOpenToken);
+                      allowTokens(!playerOne.tokenState, "player One");
+                    }}
+                    className={
+                      playerOne.tokenState
+                        ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
+                        : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                    }
+                  >
+                    Player One
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setdropdownOpenToken(!dropdownOpenToken);
+                      allowTokens(!playerTwo.tokenState, "player Two");
+                    }}
+                    className={
+                      playerTwo.tokenState
+                        ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
+                        : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                    }
+                  >
+                    Player Two
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setdropdownOpenToken(!dropdownOpenToken);
+                      allowTokens(!playerThree.tokenState, "player Three");
+                    }}
+                    className={
+                      playerThree.tokenState
+                        ? "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-500"
+                        : "w-full text-sm hover:bg-orange-600 text-white py-2 text-center bg-slate-400"
+                    }
+                  >
+                    Player Three
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
 
         <button
           className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600"
-          onClick={() => {resetState(); setLifePointsOption(20)}}
+          onClick={() => {
+            resetState();
+            setLifePointsOption(20);
+          }}
         >
           Reset
         </button>

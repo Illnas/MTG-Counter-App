@@ -22,37 +22,37 @@ function App() {
   return (
     <div className="bg-slate-200 h-screen relative flex flex-col">
       <NavBar />
-      {playerAmount.players === 1 && <Players player={playerOne} />}
+      {playerAmount.players === 1 && <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900" />}
 
       {playerAmount.players === 2 && (
         <>
-          <Players player={playerOne} />
-          <Players player={playerTwo} />
+          <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900" />
+          <Players player={playerTwo} bg="flex-1 flex flex-col justify-center items-center bg-red-900" />
         </>
       )}
 
       {playerAmount.players === 3 && (
         <>
-          <div className="flex-1 border-2 border-slate-900 flex  flex-row">
-            <Players player={playerOne} />
-            <Players player={playerTwo} />
+          <div className="flex-1 flex  flex-row">
+            <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900"/>
+            <Players player={playerTwo} bg="flex-1 flex flex-col justify-center items-center bg-red-900"/>
           </div>
-          <div className="flex-1 border-2 border-slate-900 flex  flex-col">
-            <Players player={playerThree} />
+          <div className="flex-1 flex  flex-col">
+            <Players player={playerThree} bg="flex-1 flex flex-col justify-center items-center bg-blue-900"/>
           </div>
         </>
       )}
 
       {playerAmount.players === 4 && (
         <>
-          <div className="flex-1 border-2 border-slate-900 flex  flex-row">
-            <Players player={playerOne} rotated={playerAmount.players === 4 ? "rotate-90" : ""} />
-            <Players player={playerTwo} rotated={playerAmount.players === 4 ? "-rotate-90" : ""} />
+          <div className="flex-1 flex  flex-row">
+            <Players player={playerOne} rotated={playerAmount.players === 4 ? "rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-slate-900"/>
+            <Players player={playerTwo} rotated={playerAmount.players === 4 ? "-rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-red-900"/>
           </div>
 
-          <div className=" flex-1 border-2 border-slate-900 flex  flex-row">
-            <Players player={playerThree} rotated={playerAmount.players === 4 ? "rotate-90" : ""} />
-            <Players player={playerFour} rotated={playerAmount.players === 4 ? "-rotate-90" : ""} />
+          <div className=" flex-1 flex  flex-row">
+            <Players player={playerThree} rotated={playerAmount.players === 4 ? "rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-blue-900" />
+            <Players player={playerFour} rotated={playerAmount.players === 4 ? "-rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-purple-900" />
           </div>
         </>
       )}

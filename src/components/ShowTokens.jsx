@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Pagination from "./Pagination";
 import Counters from "./Counters";
 import CounterList from "./CounterList";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../features/index";
 
 const ShowTokens = ({ player }) => {
   const [tokenState, setTokenState] = useState(true);
   const trackedTokens = player.tokens;
+  const dispatch = useDispatch();
+  const { removeTokens } = bindActionCreators(actionCreators, dispatch);
+
+  useEffect(() => {
+    if(player.tokens.length === 0) {
+      setTokenState(true)
+    }
+  }, [player.tokens.length])
 
   //Pagination data
   // User is currently on this page
@@ -29,7 +40,11 @@ const ShowTokens = ({ player }) => {
   return (
     <>
       <button
-        className={`px-4 py-2 bg-orange-500 rounded mx-4 text-white rounded-full ${trackedTokens.length === 0 ? "bg-orange-700" : "bg-orange-500 hover:bg-orange-600"}`}
+        className={`px-4 py-2 bg-orange-500 rounded mx-4 text-white rounded-full ${
+          trackedTokens.length === 0
+            ? "bg-orange-700"
+            : "bg-orange-500 hover:bg-orange-600"
+        }`}
         onClick={() => toggleShowTokens()}
         disabled={trackedTokens.length === 0 ? true : false}
       >
@@ -60,25 +75,31 @@ const ShowTokens = ({ player }) => {
                 currentRecords.map((e) => (
                   <div key={uuidv4()}>
                     {e && (
-                      <div className="relative cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+                      <div className="relative">
                         <img
                           src={e.token}
                           alt="added tokens"
                           className="w-60"
                         />
+                        <button
+                          onClick={() => (console.log(player), removeTokens(player.name, e.id))}
+                          className="absolute rounded-md right-4 top-4 z-10 bg-orange-500 px-2 py-1 cursor-pointer transition ease-in-out delay-150 duration-300 text-white hover:-translate-y-1 hover:scale-110 hover:bg-red-700"
+                        >
+                          X
+                        </button>
                       </div>
                     )}
                     <Counters tokenId={e.id} player={player} />
 
                     {e.counter.length !== 0 && (
-                      <CounterList counterList={e.counter} />
+                      <CounterList counterList={e.counter} tokenId={e.id} player={player} />
                     )}
-
-                    
                   </div>
                 ))}
+
             </div>
           </div>
+
 
           <div className="w-auto flex justify-center">
             <Pagination

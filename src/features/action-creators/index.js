@@ -4,72 +4,66 @@ export const setPlayerAmount = (playerAmount) => {
   return (dispatch) => {
     dispatch({
       type: "setPlayers",
-      payload: playerAmount
-    })
-  }
-}
+      payload: playerAmount,
+    });
+  };
+};
 
 export const addLifepoints = (player) => {
   return (dispatch) => {
-    if(player === "first") {
+    if (player === "first") {
       dispatch({
         type: "addPlayerOne",
       });
     }
 
-    if(player === "second") {
+    if (player === "second") {
       dispatch({
         type: "addPlayerTwo",
       });
     }
 
-    if(player === "third") {
+    if (player === "third") {
       dispatch({
         type: "addPlayerThird",
       });
     }
 
-    if(player === "fourth") {
+    if (player === "fourth") {
       dispatch({
         type: "addPlayerFourth",
       });
     }
-   
   };
 };
 
 export const subtractLifepoints = (player) => {
   return (dispatch) => {
-
-    if(player === "first") {
+    if (player === "first") {
       dispatch({
         type: "subtractPlayerOne",
       });
     }
 
-    if(player === "second") {
+    if (player === "second") {
       dispatch({
         type: "subtractPlayerTwo",
       });
     }
 
-    if(player === "third") {
+    if (player === "third") {
       dispatch({
         type: "subtractPlayerThird",
       });
     }
 
-    if(player === "fourth") {
+    if (player === "fourth") {
       dispatch({
         type: "subtractPlayerFourth",
       });
     }
-
-   
   };
 };
-
-
 
 export const setLifepoints = (lifepoints) => {
   return (dispatch) => {
@@ -179,6 +173,31 @@ export const trackTokens = (player, tokensToTrack, id) => {
   };
 };
 
+export const removeTokens = (player, tokenId) => {
+  return (dispatch) => {
+    if (player === "first") {
+      dispatch({
+        type: "removeFirstTokens",
+        payload: tokenId,
+      });
+    }
+
+    if (player === "second") {
+      dispatch({
+        type: "removeSecondTokens",
+        payload: tokenId,
+      });
+    }
+
+    if (player === "third") {
+      dispatch({
+        type: "removeThirdTokens",
+        payload: tokenId,
+      });
+    }
+  };
+};
+
 export const trackCounters = (player, counters, tokenId) => {
   return (dispatch) => {
     const counterData = { counters, tokenId };
@@ -208,6 +227,34 @@ export const trackCounters = (player, counters, tokenId) => {
       dispatch({
         type: "fourthCounters",
         payload: counterData,
+      });
+    }
+  };
+};
+
+
+export const removeCounters = (player, tokenId, counter) => {
+  return (dispatch) => {
+    const counterDatas = { counter, tokenId };
+
+    if (player === "first") {
+      dispatch({
+        type: "removeFirstCounters",
+        payload: counterDatas,
+      });
+    }
+
+    if (player === "second") {
+      dispatch({
+        type: "removeSecondCounters",
+        payload: counterDatas,
+      });
+    }
+
+    if (player === "third") {
+      dispatch({
+        type: "removeThirdCounters",
+        payload: counterDatas,
       });
     }
   };
