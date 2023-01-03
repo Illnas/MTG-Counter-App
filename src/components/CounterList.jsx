@@ -38,7 +38,7 @@ const CounterList = ({ counterList, tokenId, player }) => {
           >
             <div className="text-sm font-semibold">{e}</div>
             <div className="text-sm font-bold text-orange-600">{count[e]}x</div>
-            <button onClick={() => (removeCounters(player.name, tokenId, e), console.log(counterList))}>X</button>
+            <button className="rounded-md right-4 top-4 bg-orange-500 px-2 py-1 cursor-pointer transition ease-in-out delay-150 duration-300 text-white hover:-translate-y-1 hover:scale-110 hover:bg-red-700" onClick={() => removeCounters(player.name, tokenId, e)}>X</button>
           </div>
         ))}
     </div>

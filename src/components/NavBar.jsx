@@ -25,19 +25,19 @@ const NavBar = () => {
     <nav
       className={
         optionMenuState
-          ? "bg-slate-700 w-full h-12 flex flex-row justify-center items-center text-white"
+          ? "bg-slate-700 w-full lg:h-12 flex lg:flex-row sm:h-auto sm:flex-col justify-center sm:justify-start items-center text-white lg:relative sm:absolute sm:z-10"
           : "absolute top-1 right-0"
       }
     >
       <div
         className={
-          optionMenuState ? "flex flex-row justify-around mx-auto" : "hidden"
+          optionMenuState ? "flex lg:flex-row justify-around mx-auto sm:flex-col" : "hidden"
         }
       >
         <div className="relative">
           <button
             onClick={() => setdropdownOpenPlayer(!dropdownOpenPlayer)}
-            className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+            className="text-white mx-10 sm:my-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
           >
             Players: {playerAmount.players}
             {dropdownOpenPlayer ? (
@@ -75,7 +75,7 @@ const NavBar = () => {
             )}
           </button>
 
-          <div className="bg-white w-32 rounded absolute top-10 left-8 flex justify-center items-center">
+          <div className="bg-white w-32 rounded absolute lg:top-10 lg:left-8 sm:left-10 sm:top-12 flex justify-center items-center sm:z-40">
             <div
               className="divide-y divide-slate-100 rounded border-2 border-white w-full"
               hidden={dropdownOpenPlayer}
@@ -143,7 +143,7 @@ const NavBar = () => {
         <div className="relative">
           <button
             onClick={() => setdropdownOpenLifepoints(!dropdownOpenLifepoints)}
-            className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+            className="text-white mx-10 sm:my-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
           >
             Lifepoints: {lifepointsOption}
             {dropdownOpenLifepoints ? (
@@ -181,7 +181,7 @@ const NavBar = () => {
             )}
           </button>
 
-          <div className="bg-white w-32 rounded absolute top-10 left-12 flex justify-center items-center">
+          <div className="bg-white w-32 rounded absolute lg:top-10 sm:top-12 left-12 sm:left-10 sm:z-20 flex justify-center items-center">
             <div
               className="divide-y divide-slate-100 rounded border-2 border-white w-full"
               hidden={dropdownOpenLifepoints}
@@ -234,10 +234,10 @@ const NavBar = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative hidden lg:block">
           <button
             onClick={() => setdropdownOpenToken(!dropdownOpenToken)}
-            className="text-white mx-10 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+            className="text-white mx-10 sm:my-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
             disabled={playerAmount.players === 4}
           >
             Tokens
@@ -379,7 +379,7 @@ const NavBar = () => {
         </div>
 
         <button
-          className="px-4 py-2 bg-orange-500 rounded mx-4 hover:bg-orange-600"
+          className="px-4 py-2 bg-orange-500 rounded mx-4 sm:my-2 sm:ml-10 hover:bg-orange-600"
           onClick={() => {
             resetState();
             setLifePointsOption(20);
@@ -393,8 +393,8 @@ const NavBar = () => {
         onClick={() => setOptionMenuState(!optionMenuState)}
         className={
           optionMenuState
-            ? "bg-slate-700 rounded border-2 border-slate-200 mr-4 p-2 hover:bg-slate-500"
-            : "bg-orange-500 rounded  border-2 border-slate-100 mr-4 p-2 text-white hover:bg-orange-600"
+            ? "bg-slate-700 rounded border-2 border-slate-200 mr-4 p-2 hover:bg-slate-500 sm:my-2"
+            : "bg-orange-500 rounded  border-2 border-slate-100 mr-4 p-2 text-white hover:bg-orange-600 sm:my-2"
         }
       >
         Menu

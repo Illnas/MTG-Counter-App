@@ -101,7 +101,7 @@ const AddTokens = ({player}) => {
             </div>
           </div>
 
-          <div className="w-auto flex justify-center">
+          <div className="w-auto flex lg:justify-center xl:justify-none">
             <Pagination
               nPages={nPages}
               currentPage={currentPage}

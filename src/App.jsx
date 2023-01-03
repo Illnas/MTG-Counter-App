@@ -26,16 +26,16 @@ function App() {
 
       {playerAmount.players === 2 && (
         <>
-          <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900" />
-          <Players player={playerTwo} bg="flex-1 flex flex-col justify-center items-center bg-red-900" />
+          <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900" twoOpposite="flex flex-row justify-center transform lg:-rotate-0 sm:rotate-180" />
+          <Players player={playerTwo} bg="flex-1 flex flex-col justify-center items-center bg-red-900" twoOpposite="flex flex-row justify-center transform lg:rotate-0"/>
         </>
       )}
 
       {playerAmount.players === 3 && (
         <>
           <div className="flex-1 flex  flex-row">
-            <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900"/>
-            <Players player={playerTwo} bg="flex-1 flex flex-col justify-center items-center bg-red-900"/>
+            <Players player={playerOne} bg="flex-1 flex flex-col justify-center items-center bg-slate-900" threeSideways="flex flex-row justify-center lg:rotate-0 sm:rotate-90" />
+            <Players player={playerTwo} bg="flex-1 flex flex-col justify-center items-center bg-red-900" threeSideways="flex flex-row justify-center lg:transform-none sm:rotate-90"/>
           </div>
           <div className="flex-1 flex  flex-col">
             <Players player={playerThree} bg="flex-1 flex flex-col justify-center items-center bg-blue-900"/>
@@ -46,13 +46,13 @@ function App() {
       {playerAmount.players === 4 && (
         <>
           <div className="flex-1 flex  flex-row">
-            <Players player={playerOne} rotated={playerAmount.players === 4 ? "rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-slate-900"/>
-            <Players player={playerTwo} rotated={playerAmount.players === 4 ? "-rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-red-900"/>
+            <Players player={playerOne} rotated={playerAmount.players === 4 ? "transform lg:rotate-0 sm:rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-slate-900"/>
+            <Players player={playerTwo} rotated={playerAmount.players === 4 ? "transform lg:rotate-0 sm:-rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-red-900"/>
           </div>
 
           <div className=" flex-1 flex  flex-row">
-            <Players player={playerThree} rotated={playerAmount.players === 4 ? "rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-blue-900" />
-            <Players player={playerFour} rotated={playerAmount.players === 4 ? "-rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-purple-900" />
+            <Players player={playerThree} rotated={playerAmount.players === 4 ? "transform lg:rotate-0 sm:rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-blue-900" />
+            <Players player={playerFour} rotated={playerAmount.players === 4 ? "transform lg:rotate-0 sm:-rotate-90" : ""} bg="flex-1 flex flex-col justify-center items-center bg-purple-900" />
           </div>
         </>
       )}

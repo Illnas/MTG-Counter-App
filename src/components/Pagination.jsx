@@ -11,7 +11,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
   };
 
   return (
-    <nav className="m-4 p-2 bg-slate-400 w-2/3">
+    <nav className="m-4 p-2 bg-slate-400 lg:w-5/6 2xl:w-2/3">
       <ul className="flex justify-center items-center">
         <li className="bg-slate-100 m-1 p-3 rounded-l-full w-24 cursor-pointer hover:bg-slate-700 hover:text-white">
           <button onClick={prevPage} className="w-full h-full">
@@ -23,8 +23,8 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             key={pgNumber}
             className={`${
               pgNumber === currentPage
-                ? "bg-orange-300 w-9 h-10 m-2 border-slate-600 border-2"
-                : "bg-orange-100 h-10 w-9 m-2"
+                ? "bg-orange-300 lg:h-10 2xl:h-10 lg:w-16 2xl:w-9 lg:m-1 2xl:m-2 border-slate-600 border-2"
+                : "bg-orange-100 lg:h-10 2xl:h-10 lg:w-16 2xl:w-9 lg:m-1 2xl:m-2"
             }`}
           >
             <button

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 
-const Players = ({ player, rotated, bg }) => {
+const Players = ({ player, rotated, bg, threeSideways, twoOpposite }) => {
   const playerAmount = useSelector((state) => state.playerAmount);
   const dispatch = useDispatch();
   const { addLifepoints, subtractLifepoints } = bindActionCreators(
@@ -15,7 +15,7 @@ const Players = ({ player, rotated, bg }) => {
   return (
     <div className={bg}>
       <div className={rotated && rotated}>
-        <div className="flex flex-row justify-center">
+        <div className={twoOpposite ? twoOpposite : threeSideways ? threeSideways : "flex flex-row justify-center"}>
           <button
             onClick={() => subtractLifepoints(player.name)}
             className="p-2 w-10 bg-orange-500 hover:bg-orange-600 text-white text-3xl h-16 rounded-l-full"
