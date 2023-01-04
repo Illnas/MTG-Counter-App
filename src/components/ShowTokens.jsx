@@ -3,13 +3,15 @@ import { v4 as uuidv4 } from "uuid";
 import Pagination from "./Pagination";
 import Counters from "./Counters";
 import CounterList from "./CounterList";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 
 const ShowTokens = ({ player }) => {
+  // State
   const [tokenState, setTokenState] = useState(true);
   const trackedTokens = player.tokens;
+  // Redux
   const dispatch = useDispatch();
   const { removeTokens } = bindActionCreators(actionCreators, dispatch);
 
@@ -18,6 +20,7 @@ const ShowTokens = ({ player }) => {
       setTokenState(true)
     }
   }, [player.tokens.length])
+
 
   //Pagination data
   // User is currently on this page
@@ -33,6 +36,8 @@ const ShowTokens = ({ player }) => {
   const nPages =
     trackedTokens && Math.ceil(trackedTokens.length / recordsPerPage);
 
+
+    // Toggle Function
   const toggleShowTokens = () => {
     setTokenState(!tokenState);
   };

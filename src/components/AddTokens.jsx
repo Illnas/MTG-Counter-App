@@ -6,15 +6,17 @@ import { actionCreators } from "../features/index";
 import Pagination from "./Pagination";
 
 const AddTokens = ({player}) => {
+  /* State */
   const [addTokenState, setAddTokenState] = useState(true);
 
+  /* Redux */
   const tokens = useSelector((state) => state.tokens.fetchedTokens);
   const addedTokens = player.tokens.map(e => e.token)
   const tokenState = useSelector((state) => state.tokens.tokenState);
   const dispatch = useDispatch();
   const { trackTokens } = bindActionCreators(actionCreators, dispatch);
 
-  /* Count numbers of elements in an array */
+  /* Count Logic */
   const count = {};
   for (const element of addedTokens) {
     if (count[element]) {
@@ -24,7 +26,7 @@ const AddTokens = ({player}) => {
     }
   }
 
-  /*  Pagination data */
+  /*  Pagination Logic */
   // User is currently on this page
   const [currentPage, setCurrentPage] = useState(1);
   // No of Records to be displayed on each page
@@ -45,6 +47,8 @@ const AddTokens = ({player}) => {
         recordsPerPage
     );
 
+
+    /* Toggle Logic */
   const toggleAddTokens = () => {
     setAddTokenState(!addTokenState);
   };

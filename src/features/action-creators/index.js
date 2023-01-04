@@ -232,7 +232,6 @@ export const trackCounters = (player, counters, tokenId) => {
   };
 };
 
-
 export const removeCounters = (player, tokenId, counter) => {
   return (dispatch) => {
     const counterDatas = { counter, tokenId };

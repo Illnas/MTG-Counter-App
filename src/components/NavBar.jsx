@@ -4,18 +4,18 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 
 const NavBar = () => {
+  // State
   const [lifepointsOption, setLifePointsOption] = useState(20);
-
   const [dropdownOpenLifepoints, setdropdownOpenLifepoints] = useState(true);
   const [dropdownOpenToken, setdropdownOpenToken] = useState(true);
   const [dropdownOpenPlayer, setdropdownOpenPlayer] = useState(true);
   const [optionMenuState, setOptionMenuState] = useState(false);
 
+  // Redux
   const playerAmount = useSelector((state) => state.playerAmount);
   const playerOne = useSelector((state) => state.playerOne);
   const playerTwo = useSelector((state) => state.playerTwo);
   const playerThree = useSelector((state) => state.playerThree);
-  const playerFour = useSelector((state) => state.playerFour);
 
   const dispatch = useDispatch();
   const { allowTokens, resetState, setPlayerAmount, setLifepoints } =

@@ -1,18 +1,19 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../features/index";
 
 
 const CounterList = ({ counterList, tokenId, player }) => {
+  //Redux
   const dispatch = useDispatch();
   const { removeCounters } = bindActionCreators(actionCreators, dispatch);
 
 
 
 
-
+  //Count Logic
   const count = {};
   for (const element of counterList) {
     if (count[element]) {

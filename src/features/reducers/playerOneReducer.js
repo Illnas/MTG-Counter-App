@@ -3,7 +3,6 @@ let initialState = {
   lifepoints: 20,
   tokens: [],
   tokenState: false,
-  filteredData: [],
 };
 
 const reducer = (state = initialState, action) => {

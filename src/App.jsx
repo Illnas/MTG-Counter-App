@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "./features/index";
 
 function App() {
+  // Redux
   const playerOne = useSelector((state) => state.playerOne);
   const playerTwo = useSelector((state) => state.playerTwo);
   const playerThree = useSelector((state) => state.playerThree);
@@ -15,6 +16,7 @@ function App() {
   const dispatch = useDispatch();
   const { addTokens } = bindActionCreators(actionCreators, dispatch);
 
+  // Fetching API
   useEffect(() => {
     addTokens();
   }, []);
