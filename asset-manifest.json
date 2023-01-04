@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/MTG-Counter-App/static/css/main.89e87020.css",
+    "main.js": "/MTG-Counter-App/static/js/main.c427a657.js",
+    "index.html": "/MTG-Counter-App/index.html",
+    "main.89e87020.css.map": "/MTG-Counter-App/static/css/main.89e87020.css.map",
+    "main.c427a657.js.map": "/MTG-Counter-App/static/js/main.c427a657.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89e87020.css",
+    "static/js/main.c427a657.js"
+  ]
+}
