@@ -67,7 +67,7 @@ const AddTokens = ({player}) => {
         className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto"
         hidden={addTokenState}
       >
-        <div className="relative top-2 my-4 mx-20 p-2 border bg-white">
+        <div className="relative top-4 my-12 mx-20 p-2 border bg-white">
           <div className="w-full flex justify-center">
             <h3 className="bg-orange-500 text-white text-center w-32 text-2xl mb-8 p-2 rounded-lg">
               Tokens
