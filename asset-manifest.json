@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MTG-Counter-App/static/css/main.89e87020.css",
-    "main.js": "/MTG-Counter-App/static/js/main.c427a657.js",
+    "main.css": "/MTG-Counter-App/static/css/main.0920bd3a.css",
+    "main.js": "/MTG-Counter-App/static/js/main.9315fb66.js",
     "index.html": "/MTG-Counter-App/index.html",
-    "main.89e87020.css.map": "/MTG-Counter-App/static/css/main.89e87020.css.map",
-    "main.c427a657.js.map": "/MTG-Counter-App/static/js/main.c427a657.js.map"
+    "main.0920bd3a.css.map": "/MTG-Counter-App/static/css/main.0920bd3a.css.map",
+    "main.9315fb66.js.map": "/MTG-Counter-App/static/js/main.9315fb66.js.map"
   },
   "entrypoints": [
-    "static/css/main.89e87020.css",
-    "static/js/main.c427a657.js"
+    "static/css/main.0920bd3a.css",
+    "static/js/main.9315fb66.js"
   ]
 }
