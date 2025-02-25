@@ -64,9 +64,6 @@ Start the server
 
 
 ### Notes
-This project was created for purpose of practicing Redux (not a Toolkit version). As such,
-this project code has a lot of different coding practices. Just take one look at the state managment of PlayerOne 
-state. Not only was this practice project for Redux, but TypeScript will be integrated only after project was finished. In that way I will practice 
-integrating TypeScript into already finished project, and go over Redux again.
+This project was created for purpose of practicing Redux (not a Toolkit version).
 
 
